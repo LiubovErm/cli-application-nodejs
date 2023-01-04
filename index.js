@@ -38,7 +38,15 @@ const invokeAction = async({ action, id, name, email, phone }) => {
         throw new Error(`Contact with id ${id} not found`);
       }
       console.log(removeContact);
-      break;
+        break;
+    
+    case "update":
+      const updateContact = await contactsOperations.updateContact({ id, name, email, phone });
+      if (!updateContact) {
+        throw new Error(`Contact with id ${id} not found`);
+      }
+      console.log(updateContact);
+      break;  
 
     default:
       console.warn("\x1B[31m Unknown action type!");
